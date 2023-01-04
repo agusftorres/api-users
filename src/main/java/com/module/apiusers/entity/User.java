@@ -2,6 +2,9 @@ package com.module.apiusers.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.module.apiusers.controller.model.UserRequest;
+import com.module.apiusers.security.TokenUtils;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -57,7 +60,7 @@ public class User {
                 .created(LocalDateTime.now().toString())
                 .modified(LocalDateTime.now().toString())
                 .lastLogin(LocalDateTime.now().toString())
-                .token("sadasdsa")
+                .token(TokenUtils.createToken(request.getName(), request.getEmail()))
                 .isActive(true)
                 .phones(request.getPhones()
                         .stream()
