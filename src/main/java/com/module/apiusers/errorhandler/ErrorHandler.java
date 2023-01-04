@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.module.apiusers.exception.BusinessException;
+import com.module.apiusers.exception.UnauthorizedException;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.Builder;
 import lombok.NonNull;
@@ -29,13 +30,12 @@ public class ErrorHandler {
         this.httpServletRequest = httpServletRequest;
     }
 
-//    @ExceptionHandler({
-//            UnauthorizedException.class
-//    })
-//    public ResponseEntity<ApiErrorResponse> handle(UnauthorizedException ex) {
-//        log.error(HttpStatus.UNAUTHORIZED.getReasonPhrase(), ex);
-//        return buildResponseError(HttpStatus.UNAUTHORIZED, ex, ex.getCode());
-//    }
+    @ExceptionHandler({
+            UnauthorizedException.class
+    })
+    public ResponseEntity<ApiErrorResponse> handle(UnauthorizedException ex) {
+        return buildResponseError(HttpStatus.UNAUTHORIZED, ex, ex.getCode());
+    }
     @ExceptionHandler({
             MethodArgumentNotValidException.class
     })

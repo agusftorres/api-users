@@ -1,6 +1,5 @@
 package com.module.apiusers.controller.model;
 
-import com.module.apiusers.entity.Phone;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.Getter;

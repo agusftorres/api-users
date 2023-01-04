@@ -3,8 +3,6 @@ package com.module.apiusers.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.module.apiusers.controller.model.UserRequest;
 import com.module.apiusers.security.TokenUtils;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

@@ -1,10 +1,7 @@
 package com.module.apiusers.security;
 
-import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
 import java.util.Date;
 import java.util.HashMap;

@@ -8,13 +8,7 @@ import com.module.apiusers.exception.BusinessException;
 import com.module.apiusers.repository.UserRepository;
 import com.module.apiusers.security.TokenUtils;
 import com.module.apiusers.service.UserService;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -26,17 +20,8 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserRepository userRepository;
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
-
     @Override
     public User signIn(UserRequest request) {
-//        Authentication authentication = authenticationManager.authenticate(
-//                new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
-//        );
-//        SecurityContextHolder.getContext().setAuthentication(authentication);
-
-
         final Optional<User> user = userRepository.findByEmail(request.getEmail());
         if(user.isPresent()){
             throw new BusinessException(ErrorCode.INVALID_EMAIL);
