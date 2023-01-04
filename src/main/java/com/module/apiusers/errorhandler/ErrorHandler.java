@@ -1,11 +1,7 @@
 package com.module.apiusers.errorhandler;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.module.apiusers.exception.BusinessException;
-import com.module.apiusers.exception.UnauthorizedException;
-import jakarta.servlet.http.HttpServletRequest;
 import lombok.Builder;
 import lombok.NonNull;
 import org.springframework.http.HttpStatus;
@@ -24,18 +20,6 @@ import java.util.stream.Collectors;
 @ControllerAdvice
 public class ErrorHandler {
 
-    private final HttpServletRequest httpServletRequest;
-
-    public ErrorHandler(final HttpServletRequest httpServletRequest) {
-        this.httpServletRequest = httpServletRequest;
-    }
-
-    @ExceptionHandler({
-            UnauthorizedException.class
-    })
-    public ResponseEntity<ApiErrorResponse> handle(UnauthorizedException ex) {
-        return buildResponseError(HttpStatus.UNAUTHORIZED, ex, ex.getCode());
-    }
     @ExceptionHandler({
             MethodArgumentNotValidException.class
     })
@@ -81,7 +65,6 @@ public class ErrorHandler {
 
     @Builder
     @NonNull
-    @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
     private static class ApiErrorResponse {
 
         private static final String DATE_PATTERN = "yyyy-MM-dd'T'HH:mm:ss[.SSSSSSSSS]['Z']";
