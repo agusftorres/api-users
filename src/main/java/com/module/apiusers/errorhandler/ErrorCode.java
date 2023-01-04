@@ -7,9 +7,7 @@ public enum ErrorCode {
     WRONG_LOGIN_DATA(103, "La combinación de datos no es correcta"),
     AUTHENTICATION_INVALID(104, "Autenticación incorrecta"),
     BAD_REQUEST(105, "Algunos campos no son correctos"),
-    UNAUTHORIZED(106, "El token no es valido"),
-    CONFLICT(107, "Ya existe un usuario con esos parametros");
-
+    UNAUTHORIZED(106, "El token no es valido");
     private final int value;
     private final String reasonPhrase;
 
