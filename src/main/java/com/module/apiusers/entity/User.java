@@ -60,11 +60,18 @@ public class User {
                 .lastLogin(LocalDateTime.now().toString())
                 .token(TokenUtils.createToken(request.getName(), request.getEmail()))
                 .isActive(true)
-                .phones(request.getPhones()
-                        .stream()
-                        .map(Phone::fromModel)
-                        .collect(Collectors.toList()))
+                .phones(getPhones(request))
                 .build();
+    }
+
+    private static List<Phone> getPhones(UserRequest request) {
+        if(request.getPhones() != null){
+            return request.getPhones()
+                    .stream()
+                    .map(Phone::fromModel)
+                    .collect(Collectors.toList());
+        }
+        return List.of();
     }
 
 }
