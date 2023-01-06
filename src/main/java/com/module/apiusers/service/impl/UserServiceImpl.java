@@ -9,11 +9,9 @@ import com.module.apiusers.repository.UserRepository;
 import com.module.apiusers.security.TokenUtils;
 import com.module.apiusers.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.Base64;
 import java.util.Optional;
 

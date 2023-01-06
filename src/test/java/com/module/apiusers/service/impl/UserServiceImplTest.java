@@ -25,7 +25,7 @@ class UserServiceImplTest {
     private final UserRequest USER_REQUEST = UserRequest.builder()
             .email("test@example.com")
             .name("Test Name")
-            .password("Apple#33")
+            .password("VGVzdDEyMw==")
             .build();
     private final User USER = User.createUser(USER_REQUEST);
 
